@@ -28,7 +28,7 @@ for i in range(len(geheimecode)):
 feedback = []
 
 #Regel tekst
-print("Welkom bij mastermind!")
+print("Welkom bij Mastermind!")
 print("Leuk dat je ons spel wilt spelen. In dit spel wordt er een geheime kleurencode uitgekozen door de computer. De code bestaat uit %s letters." % (aantal_kleuren))
 print("Een kleur kan vaker in de code voorkomen.")
 print("De kleuren waaruit de computer kan kiezen zijn:")
@@ -46,7 +46,7 @@ print("Voorbeeld: ZWW, dit betekent dat er drie kleuren goed zijn geraden en er 
 #Loop van het spel
 while True:
   beurt = 1
-  geheimeCode = kiesgeheimecode(kleuren)
+  geheimecode = kiesgeheimecode(kleuren)
   print("Je hebt " + str(aantal_beurten) + " beurten")
   while beurt <= aantal_beurten:
     gokopnieuw = False
@@ -57,7 +57,6 @@ while True:
         gokopnieuw = True
       elif i not in kleuren:
         gokopnieuw = True
-
     print(geeffeedback(gok, geheimecode))
     beurt += 1
 
