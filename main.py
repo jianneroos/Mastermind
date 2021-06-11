@@ -22,6 +22,8 @@ def geeffeedback(gok, geheimecode):
   else:
     return "".join(feedback)
 
+
+
 #Regel tekst
 print("Welkom bij Mastermind!")
 print("Leuk dat je ons spel wilt spelen. In dit spel wordt er een geheime kleurencode uitgekozen door de computer. De code bestaat uit %s letters." % (aantal_kleuren))
@@ -55,11 +57,15 @@ while True:
     gokopnieuw = False
     print("Beurt " + str(beurt))
     gok = input().lower()
-    for i in gok:
+    for i in gok:    
       if i.isdigit():
         gokopnieuw = True
       elif i not in kleuren:
         gokopnieuw = True
+
+    if gokopnieuw == True:
+      print("Geen geldige tekens ingevoerd, probeer het opnieuw.")
+      continue
 
     #Eerste deel feedback: zitten geraden kleuren op de goede plek?
     #Naar x veranderen, dus geen duplicaties voor tweede deel feedback
@@ -82,3 +88,11 @@ while True:
     if gok == geheimecode:
 #In de functie geef feedback zit de felicitatie
       break
+
+    if gokopnieuw == True:
+      print("Geen geldige tekens ingevoerd, probeer het opnieuw.")
+      continue
+    if len(gok) != aantal_kleuren:
+      beurt += 1
+      print("De code die is ingevuld was te lang of te kort, er gaat een beurt vanaf. Probeer het nog eens.")
+      continue
