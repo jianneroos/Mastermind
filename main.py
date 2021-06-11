@@ -9,6 +9,38 @@ def kiesgeheimecode(kleuren):
   
   return geheimecode
 
+#Feedback
+def geeffeedback(gok, geheimecode):
+  if gok == geheimecode:
+    return "De kleurcode is gekraakt!"
+
+#Kopie geheime code (list) voor juiste feedback
+kopiegok = []
+for i in range(len(geheimeCode)):
+    kopiegok.append(geheimecode[i])
+
+feedback = []
+
+#Eerste deel feedback: zitten geraden kleuren op de goede plek?
+#Naar x veranderen, dus geen duplicaties voor tweede deel feedback
+for i in range(aantal_kleuren):
+    if gok[i] == kopiegok[i]:
+      feedback.append("Z")
+      kopiegok[i] = "X"
+
+#Tweede deel feedback: zitten de geraden kleuren in de code?
+#Naar x veranderen, dus geen duplicaties
+for gokletter in range(aantal_kleuren):
+    for codeletter in range(len(kopiegok)):
+      if gok[gokletter] == kopiegok[codeletter]:
+        feedback.append("W")
+        kopiegok[codeletter] = "X"
+
+  if len(feedback) == 0:
+    return "Helaas komen geen van de geraden kleuren in de code voor! Probeer het nog eens!
+  else:
+    return "".join(feedback)
+
 #Aantal variabele vaststellen
 aantal_kleuren = 4
 aantal_beurten = 10
@@ -29,4 +61,3 @@ print()
 print("Je kan alleen de letters invullen van de kleuren waaruit je kan kiezen. Bij het invullen van meer, minder of andere letters, tekens of cijfers gaat er een beurt af.")
 print()
 print("Voorbeeld: ZWW, dit betekent dat er drie kleuren goed zijn geraden en er daarvan één op de goede plek zit en twee op de verkeerde plek.")
-
