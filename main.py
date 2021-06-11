@@ -66,6 +66,10 @@ while True:
     if gokopnieuw == True:
       print("Geen geldige tekens ingevoerd, probeer het opnieuw.")
       continue
+    if len(gok) != aantal_kleuren:
+      beurt += 1
+      print("De code die is ingevuld was te lang of te kort, er gaat een beurt vanaf. Probeer het nog eens.")
+      continue
 
     #Eerste deel feedback: zitten geraden kleuren op de goede plek?
     #Naar x veranderen, dus geen duplicaties voor tweede deel feedback
