@@ -1,3 +1,14 @@
+import random
+
+#Computer kiest geheime code
+def kiesgeheimecode(kleuren):
+  geheimecode = ""
+  for i in range (0,4):
+    plek = random.randint(0,5)
+    geheimecode += kleuren[plek]
+  
+  return geheimecode
+
 #Aantal variabele vaststellen
 aantal_kleuren = 4
 aantal_beurten = 10
