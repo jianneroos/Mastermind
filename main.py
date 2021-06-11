@@ -19,13 +19,8 @@ def kiesgeheimecode(kleuren):
 def geeffeedback(gok, geheimecode):
   if gok == geheimecode:
     return "De kleurcode is gekraakt!"
-
-#Kopie geheime code (list) voor juiste feedback
-kopiegok = []
-for i in range(len(geheimecode)):
-    kopiegok.append(geheimecode [i])
-
-feedback = []
+  else:
+    return "".join(feedback)
 
 #Regel tekst
 print("Welkom bij Mastermind!")
@@ -45,8 +40,16 @@ print("Voorbeeld: ZWW, dit betekent dat er drie kleuren goed zijn geraden en er 
 
 #Loop van het spel
 while True:
+  #Kopie geheime code (list) voor juiste feedback
+  kopiegok = []
+  feedback = []
+
   beurt = 1
   geheimecode = kiesgeheimecode(kleuren)
+
+  for i in range(len(geheimecode)):
+      kopiegok.append(geheimecode [i])
+
   print("Je hebt " + str(aantal_beurten) + " beurten")
   while beurt <= aantal_beurten:
     gokopnieuw = False
@@ -57,23 +60,25 @@ while True:
         gokopnieuw = True
       elif i not in kleuren:
         gokopnieuw = True
+
+    #Eerste deel feedback: zitten geraden kleuren op de goede plek?
+    #Naar x veranderen, dus geen duplicaties voor tweede deel feedback
+    for i in range(aantal_kleuren):
+      if gok[i] == kopiegok[i]:
+        feedback.append("Z")
+        kopiegok[i] = "X"
+
+    #Tweede deel feedback: zitten de geraden kleuren in de code?
+    #Naar x veranderen, dus geen duplicaties
+    for gokletter in range(aantal_kleuren):
+      for codeletter in range(len(kopiegok)):
+        if gok[gokletter] == kopiegok[codeletter]:
+          feedback.append("W")
+          kopiegok[codeletter] = "X"
+
     print(geeffeedback(gok, geheimecode))
     beurt += 1
 
     if gok == geheimecode:
+#In de functie geef feedback zit de felicitatie
       break
-
-#Eerste deel feedback: zitten geraden kleuren op de goede plek?
-#Naar x veranderen, dus geen duplicaties voor tweede deel feedback
-for i in range(aantal_kleuren):
-    if gok[i] == kopiegok[i]:
-      feedback.append("Z")
-      kopiegok[i] = "X"
-
-#Tweede deel feedback: zitten de geraden kleuren in de code?
-#Naar x veranderen, dus geen duplicaties
-for gokletter in range(aantal_kleuren):
-    for codeletter in range(len(kopiegok)):
-      if gok[gokletter] == kopiegok[codeletter]:
-        feedback.append("W")
-        kopiegok[codeletter] = "X"
