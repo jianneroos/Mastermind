@@ -1,4 +1,6 @@
 import random
+import os
+
 geheimecode = ""
 
 #Aantal variabelen vaststellen
@@ -22,7 +24,16 @@ def geeffeedback(gok, geheimecode):
   else:
     return "".join(feedback)
 
-
+#Vraagt de speler of ze opnieuw willen spelen
+def speelopnieuw():
+  while True:
+    opnieuw = input("Wil je nog een ronde spelen? (ja of nee)\n").lower()  
+    if opnieuw == "nee":
+      return False
+    elif opnieuw != "ja":
+      print("Zeg ja of nee alstublieft")
+    else:
+      return True
 
 #Regel tekst
 print("Welkom bij Mastermind!")
@@ -92,11 +103,12 @@ while True:
     if gok == geheimecode:
 #In de functie geef feedback zit de felicitatie
       break
-
-    if gokopnieuw == True:
-      print("Geen geldige tekens ingevoerd, probeer het opnieuw.")
-      continue
-    if len(gok) != aantal_kleuren:
-      beurt += 1
-      print("De code die is ingevuld was te lang of te kort, er gaat een beurt vanaf. Probeer het nog eens.")
-      continue
+ 
+  if beurt > aantal_beurten:
+    print("Je hebt verloren")
+    print("de geheime code was: %s" % (geheimecode))
+  
+  if speelopnieuw() == False:
+    break
+  else:
+    os.system('cls' if os.name == 'nt' else 'clear')
