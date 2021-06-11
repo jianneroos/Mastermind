@@ -24,7 +24,7 @@ def geeffeedback(gok, geheimecode):
   else:
     return "".join(feedback)
 
-#Vraagt de speler of ze opnieuw willen spelen
+#Vraag de speler of ze opnieuw willen spelen
 def speelopnieuw():
   while True:
     opnieuw = input("Wil je nog een ronde spelen? (ja of nee)\n").lower()  
