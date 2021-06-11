@@ -1,4 +1,7 @@
+#Aantal variabele vaststellen
 aantal_kleuren = 4
+aantal_beurten = 10
+kleuren = ["r", "b", "g", "c", "p", "m"]
 
 #Regel tekst
 print("Welkom bij mastermind!")
@@ -15,3 +18,4 @@ print()
 print("Je kan alleen de letters invullen van de kleuren waaruit je kan kiezen. Bij het invullen van meer, minder of andere letters, tekens of cijfers gaat er een beurt af.")
 print()
 print("Voorbeeld: ZWW, dit betekent dat er drie kleuren goed zijn geraden en er daarvan één op de goede plek zit en twee op de verkeerde plek.")
+
